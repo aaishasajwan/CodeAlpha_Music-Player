@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="player">
+        <!-- Screen 1: Main Player and Library -->
+        <div class="screen main-screen">
+            <div class="main-info">
+                <div id="vinyl-image" class="vinyl-container">
+                    <img src="vinyl-removebg-preview.png" alt="Vinyl Record">
+                </div>
+                <div class="song-details">
+                    <p class="now-playing">Now Playing</p>
+                    <h1 id="song-title">Song Title</h1>
+                    <h2 id="song-artist">Artist Name</h2>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <span id="current-time">0:00</span>
+                <input type="range" id="progress" class="progress-bar" value="0">
+                <span id="total-duration">0:00</span>
+            </div>
+
+            <div class="controls-container">
+                <button id="shuffle-btn" class="control-btn side-btn"><i class="fas fa-shuffle"></i></button>
+                <button id="prev" class="control-btn main-icon-btn"><i class="fas fa-backward-step"></i></button>
+                <button id="play" class="control-btn play-btn"><i class="fas fa-play"></i></button>
+                <button id="next" class="control-btn main-icon-btn"><i class="fas fa-forward-step"></i></button>
+                <button id="repeat-btn" class="control-btn side-btn"><i class="fas fa-repeat"></i></button>
+            </div>
+            
+            <div class="volume-control">
+                <i class="fas fa-volume-down"></i>
+                <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                <i class="fas fa-volume-up"></i>
+            </div>
+
+            <div class="playlist-container">
+                <h3>Library</h3>
+                <ul id="library-list"></ul>
+            </div>
+            
+            <button id="go-to-playlist-btn" class="nav-btn">Manage Playlists <i class="fas fa-arrow-right"></i></button>
+        </div>
+
+        <!-- Screen 2: Playlist Management -->
+        <div class="screen playlist-screen">
+            <button id="back-to-main-btn" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Back to Player</button>
+            <div class="my-playlist-header">
+                <h3>My Playlists</h3>
+                <select id="playlist-selector"></select>
+                <div class="playlist-actions">
+                    <button id="rename-playlist-btn" class="list-action-btn" title="Rename"><i class="fas fa-pen"></i></button>
+                    <button id="new-playlist-btn" class="list-action-btn" title="New"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+            <ul id="my-playlist"></ul>
+        </div>
+    </div>
+
+    <!-- Pop-up menu for adding a song to a playlist -->
+    <div id="add-to-playlist-modal" class="modal-overlay">
+        <div class="context-menu">
+            <h4>Add song to...</h4>
+            <ul id="context-playlist-list">
+                <!-- Playlists will be dynamically added here -->
+            </ul>
+            <button id="context-new-playlist-btn" class="nav-btn">Create New Playlist</button>
+        </div>
+    </div>
+
+    <audio id="audio" src=""></audio>
+    <script src="script.js"></script>
+</body>
+</html>
